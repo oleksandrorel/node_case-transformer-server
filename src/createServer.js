@@ -23,6 +23,11 @@ function createServer() {
         });
       }
 
+      const { originalCase, convertedText } = convertToCase(
+        originalText,
+        targetCase,
+      );
+
       if (errors.length) {
         const errorResult = { errors };
         const serializedResult = JSON.stringify(errorResult);
@@ -32,11 +37,6 @@ function createServer() {
 
         return;
       }
-
-      const { originalCase, convertedText } = convertToCase(
-        originalText,
-        targetCase,
-      );
 
       const result = {
         originalCase,
